@@ -1,0 +1,16 @@
+{
+  "name": "mastering-nuxt",
+  "dependencies": {
+    "nuxt": "^2.14.7"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "sass": "1.32.5",
+    "sass-loader": "10.1.1"
+  }
+}
