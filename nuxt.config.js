@@ -10,7 +10,12 @@ export default {
         },
         meta: [{
             charset: "utf-8",
-        }]
+        }],
+        script: [
+            {
+                src: 'https://accounts.google.com/gsi/client',
+            },
+        ],
     },
     router: {
         prefetchLinks: false,
@@ -18,10 +23,24 @@ export default {
     plugins: [
         '~/plugins/maps.client',
         '~/plugins/dataApi',
+        // '~/plugins/auth.client'
     ],
     modules: [],
     buildModules: ['@nuxtjs/tailwindcss'],
     css: ['~/assets/sass/app.scss'],
+    build: {
+        extractCSS: true,
+        loaders: {
+            limit: 0
+        }
+    },
+    publicRuntimeConfig: {
+        auth: {
+            cookieName: "idToken",
+            clientId: "528848303668-lapkfimdqtg12ecgo0724fq1c1fta6uc.apps.googleusercontent.com"
+        }
+    },
+    privateRuntimeConfig: {
 
-
+    }
 }

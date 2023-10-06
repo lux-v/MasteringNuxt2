@@ -1,23 +1,22 @@
 export default function (context, inject) {
     let isLoaded = false
     let waiting = []
-
+    window.initGoogleMaps = init
     addScript()
+
     inject('maps', {
         showMap,
         makeAutoComplete,
     })
 
-
     function addScript() {
         const script = document.createElement('script')
         script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHZm9ZUbmV1CCZ7vZY2-jBv77xwky9bpw&libraries=places&callback=initGoogleMaps"
         script.async = true
-        window.initGoogleMaps = initGoogleMaps
         document.head.appendChild(script)
     }
 
-    function initGoogleMaps() {
+    function init() {
         isLoaded = true
         waiting.forEach((item) => {
             if (typeof item.fn === 'function') {
