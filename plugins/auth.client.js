@@ -10,6 +10,8 @@ export default ({ $config }, inject) => {
         script.src = "https://accounts.google.com/gsi/client"
         script.async = true
         script.defer = true
+
+        script.onload = init;
         document.head.appendChild(script)
     }
 
@@ -36,5 +38,7 @@ export default ({ $config }, inject) => {
 
     function parseUser(res) {
         const credential = jwt_decode(res.credential);
+
+        console.log("credential:", credential)
     }
 }

@@ -11,11 +11,6 @@ export default {
         meta: [{
             charset: "utf-8",
         }],
-        script: [
-            {
-                src: 'https://accounts.google.com/gsi/client',
-            },
-        ],
     },
     router: {
         prefetchLinks: false,
@@ -23,7 +18,7 @@ export default {
     plugins: [
         '~/plugins/maps.client',
         '~/plugins/dataApi',
-        // '~/plugins/auth.client'
+        '~/plugins/auth.client'
     ],
     modules: [],
     buildModules: ['@nuxtjs/tailwindcss'],

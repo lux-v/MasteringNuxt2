@@ -45,31 +45,8 @@ export default {
   },
   mounted() {
     this.$maps.makeAutoComplete(this.$refs.citySearch);
-
-    //--------------This could be moved into plugins-----------------
-    google.accounts.id.initialize({
-      client_id: this.$config.auth.clientId,
-      callback: this.parseUser,
-      context: "signin",
-    });
-
-    google.accounts.id.renderButton(document.getElementById("googleButton"), {
-      type: "standard",
-      size: "large",
-      text: "signin_with",
-      shape: "rectangular",
-      logo_alignment: "center",
-      width: 250,
-    });
-    //---------------------------------------------------------------
   },
   methods: {
-    //--------------This could be moved into plugins-----------------
-    parseUser(res) {
-      const credential = jwt_decode(res.credential);
-    },
-    //---------------------------------------------------------------
-
     changed(event) {
       const place = event.detail;
       if (!place.geometry) return;
