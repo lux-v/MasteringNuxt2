@@ -19,29 +19,26 @@
         </button>
       </div>
       <div class="app-user-menu">
-        <img src="/images/icons/house.svg" />
-        <div class="name">Host</div>
-        <div id="googleButton"></div>
+        <template v-if="isLoggedIn">
+          <img src="/images/icons/house.svg" />
+          <div class="name">Host</div>
+          <img :src="user.profileUrl" class="avatar" />
+        </template>
+        <div v-show="!isLoggedIn" id="googleButton" class="ml-8"></div>
       </div>
     </header>
     <nuxt />
   </div>
 </template>
 <script>
-import jwt_decode from "jwt-decode";
 export default {
-  data() {
-    return {
-      location: {
-        lat: 0,
-        lng: 0,
-        label: "",
-      },
-      range: {
-        start: null,
-        end: null,
-      },
-    };
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
+    isLoggedIn() {
+      return this.$store.state.auth.isLoggedIn;
+    },
   },
   mounted() {
     this.$maps.makeAutoComplete(this.$refs.citySearch);

@@ -1,9 +1,14 @@
 // https://gist.github.com/srestraj/c61d0a025f53ab7f99bd875eace5cc84
 import jwt_decode from "jwt-decode";
+import Cookie from 'js-cookie'
 
-export default ({ $config }, inject) => {
+export default ({ $config, store }, inject) => {
     window.initAuth = init
     addScript()
+
+    inject("auth", {
+        signOut
+    })
 
     function addScript() {
         const script = document.createElement('script')
@@ -19,7 +24,7 @@ export default ({ $config }, inject) => {
     function init() {
         window.google.accounts.id.initialize({
             client_id: $config.auth.clientId,
-            callback: parseUser,
+            callback: handleCredentialResponse,
             context: "signin"
         })
 
@@ -28,7 +33,7 @@ export default ({ $config }, inject) => {
             {
                 type: 'standard',
                 size: 'large',
-                text: 'signin_with',
+                text: 'signed_in',
                 shape: 'rectangular',
                 logo_alignment: 'center',
                 width: 250
@@ -36,9 +41,26 @@ export default ({ $config }, inject) => {
         )
     }
 
-    function parseUser(res) {
-        const credential = jwt_decode(res.credential);
+    function handleCredentialResponse(res) {
+        const id_token = res.credential;
+        const credential = jwt_decode(id_token);
 
-        console.log("credential:", credential)
+        if (!id_token) {
+            Cookie.remove($config.auth.cookieName)
+            store.commit('auth/user', null)
+            return
+        }
+
+        store.commit("auth/user", {
+            fullName: credential.name,
+            profileUrl: credential.picture
+        })
+        Cookie.set($config.auth.cookieName, id_token)
+    }
+
+    function signOut() {
+        google.accounts.id.disableAutoSelect();
+        Cookie.remove($config.auth.cookieName)
+        store.commit('auth/user', null)
     }
 }
