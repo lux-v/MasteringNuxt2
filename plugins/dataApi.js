@@ -1,12 +1,10 @@
 import { unWrap, getErrorResponse } from '~/utils/fetchUtils'
 
-export default function (context, inject) {
-    const appId = "NMKU3QSRYW"
-    const appKey = "991dfdaf0f383e94c7096283ce32e646"
-
-
+export default function ({ $config }, inject) {
+    const appId = $config.algolia.appId
+    const apiKey = $config.algolia.key
     const headers = {
-        'X-Algolia-API-Key': appKey,
+        'X-Algolia-API-Key': apiKey,
         'X-Algolia-Application-Id': appId,
     }
     inject('dataApi', {

@@ -20,7 +20,7 @@ export default {
         '~/plugins/dataApi',
         '~/plugins/auth.client'
     ],
-    modules: [],
+    modules: ["~/modules/auth", "~/modules/algolia"],
     buildModules: ['@nuxtjs/tailwindcss'],
     css: ['~/assets/sass/app.scss'],
     build: {
@@ -33,9 +33,16 @@ export default {
         auth: {
             cookieName: "idToken",
             clientId: "528848303668-lapkfimdqtg12ecgo0724fq1c1fta6uc.apps.googleusercontent.com"
+        },
+        algolia: {
+            appId: "NMKU3QSRYW",
+            key: "991dfdaf0f383e94c7096283ce32e646",
         }
     },
     privateRuntimeConfig: {
-
-    }
+        algolia: {
+            appId: "NMKU3QSRYW",
+            key: "4661ebcddf95380b6bb45c84e14c2920",
+        }
+    },
 }

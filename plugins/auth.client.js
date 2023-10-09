@@ -1,6 +1,7 @@
 // https://gist.github.com/srestraj/c61d0a025f53ab7f99bd875eace5cc84
 import jwt_decode from "jwt-decode";
 import Cookie from 'js-cookie'
+import { unWrap } from "../utils/fetchUtils";
 
 export default ({ $config, store }, inject) => {
     window.initAuth = init
@@ -20,11 +21,10 @@ export default ({ $config, store }, inject) => {
         document.head.appendChild(script)
     }
 
-
     function init() {
         window.google.accounts.id.initialize({
             client_id: $config.auth.clientId,
-            callback: handleCredentialResponse,
+            callback: parseUser,
             context: "signin"
         })
 
@@ -41,9 +41,9 @@ export default ({ $config, store }, inject) => {
         )
     }
 
-    function handleCredentialResponse(res) {
+    async function parseUser(res) {
         const id_token = res.credential;
-        const credential = jwt_decode(id_token);
+        // const credential = jwt_decode(id_token);
 
         if (!id_token) {
             Cookie.remove($config.auth.cookieName)
@@ -51,11 +51,19 @@ export default ({ $config, store }, inject) => {
             return
         }
 
-        store.commit("auth/user", {
-            fullName: credential.name,
-            profileUrl: credential.picture
-        })
         Cookie.set($config.auth.cookieName, id_token)
+
+        try {
+            const response = await unWrap(await fetch('/api/user'))
+            const user = response.json
+
+            store.commit("auth/user", {
+                fullName: user.name,
+                profileUrl: user.image
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     function signOut() {
