@@ -20,7 +20,11 @@ export default {
         '~/plugins/dataApi',
         '~/plugins/auth.client'
     ],
-    modules: ["~/modules/auth", "~/modules/algolia/index"],
+    modules: [
+        "~/modules/auth",
+        "~/modules/algolia/index",
+
+    ],
     buildModules: ['@nuxtjs/tailwindcss'],
     css: ['~/assets/sass/app.scss'],
     build: {

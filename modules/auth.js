@@ -18,7 +18,6 @@ export default function () {
         })
     })
 
-
     async function handler(req, res, next) {
         const idToken = cookie.parse(req.headers.cookie)[authConfig.cookieName]
         if (!idToken) return rejectHit(res)
