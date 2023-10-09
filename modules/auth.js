@@ -9,6 +9,16 @@ export default function () {
     this.nuxt.hook('render:setupMiddleware', (app) => {
         app.use("/api", handler)
     })
+
+    // set the SPA mode only for the /admin route
+    this.nuxt.hook('render:setupMiddleware', (app) => {
+        app.use("/admin", (req, res, next) => {
+            res.spa = true;
+            next()
+        })
+    })
+
+
     async function handler(req, res, next) {
         const idToken = cookie.parse(req.headers.cookie)[authConfig.cookieName]
         if (!idToken) return rejectHit(res)
