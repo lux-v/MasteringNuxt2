@@ -44,6 +44,7 @@ export default {
         }
     },
     publicRuntimeConfig: {
+        rootUrl: process.env.NODE_ENV === "production" ? "https://mastering-nuxt2-ten.vercel.app" : "https://localhost:3000",
         auth: {
             cookieName: "idToken",
             clientId: "528848303668-lapkfimdqtg12ecgo0724fq1c1fta6uc.apps.googleusercontent.com"
