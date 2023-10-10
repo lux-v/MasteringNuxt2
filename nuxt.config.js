@@ -23,9 +23,18 @@ export default {
     modules: [
         "~/modules/auth",
         "~/modules/algolia/index",
-
+        "~/modules/cloudinary/index",
+        // '@nuxtjs/cloudinary'
     ],
-    buildModules: ['@nuxtjs/tailwindcss'],
+    buildModules: [
+        '@nuxtjs/tailwindcss',
+        "@nuxt/image"
+    ],
+    image: {
+        cloudinary: {
+            baseURL: 'https://res.cloudinary.com/dgopysenc/image/upload/'
+        }
+    },
     css: ['~/assets/sass/app.scss'],
     build: {
         extractCSS: true,
@@ -41,12 +50,19 @@ export default {
         algolia: {
             appId: "NMKU3QSRYW",
             key: "991dfdaf0f383e94c7096283ce32e646",
+        },
+        cloudinary: {
+            apiKey: "921885162476816",
+            cloudName: "dgopysenc",
         }
     },
     privateRuntimeConfig: {
         algolia: {
             appId: "NMKU3QSRYW",
             key: "4661ebcddf95380b6bb45c84e14c2920",
+        },
+        cloudinary: {
+            apiSecret: "fGDF4a89Mb9YLRb4Sqlb7tRt9mM"
         }
     },
 }

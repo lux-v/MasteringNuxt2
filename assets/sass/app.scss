@@ -6,6 +6,7 @@ body {
 }
 
 $cities: paris, new-york, london, dubai, san-francisco, cancun;
+
 @each $city in $cities {
   .city-#{$city} {
     background-image: url(/images/photos/#{$city}.jpg);
@@ -60,7 +61,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
     background-position: top 2px left;
     @apply pl-5 bg-no-repeat text-mineshaft font-medium text-sm;
 
-    > span {
+    >span {
       @apply text-polo-blue;
     }
   }
@@ -68,7 +69,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-price {
     @apply text-mineshaft font-medium mt-3;
 
-    > span {
+    >span {
       @apply text-polo-blue font-normal;
     }
   }
@@ -90,7 +91,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
       }
     }
 
-    > button {
+    >button {
       @apply bg-dodger-blue self-stretch px-5 rounded-lg;
     }
   }
@@ -111,7 +112,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
     background-image: url(/images/photos/beach.jpg);
     @apply h-148 bg-cover rounded-3xl flex items-end justify-center pb-12;
 
-    > h2 {
+    >h2 {
       @apply text-white font-medium text-3xl;
     }
   }
@@ -149,7 +150,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-testimonials {
     @apply flex flex-wrap;
 
-    > div {
+    >div {
       @apply w-1/2 mb-15;
 
       &:nth-child(odd) {
@@ -181,7 +182,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
         text-indent: 22px;
         @apply bg-no-repeat text-sm text-trout;
 
-        > a {
+        >a {
           @apply text-dodger-blue;
         }
       }
@@ -195,7 +196,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-dual-picture {
     @apply flex items-center w-full rounded-2xl overflow-hidden;
 
-    > a {
+    >a {
       @apply inline-block flex-grow w-1/2 h-94 p-5 flex items-end text-white justify-center text-center;
 
       h3 {
@@ -211,7 +212,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-double-column {
     @apply flex;
 
-    > div {
+    >div {
       &:nth-child(1) {
         @apply w-7/12 border-dashed border-r border-dusty-gray pr-14;
       }
@@ -267,8 +268,10 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-masonry {
     @apply grid grid-cols-4 grid-rows-2 gap-6 mb-18;
     grid-template-rows: 280px 280px;
-    > div {
+
+    >div {
       background-size: cover;
+
       &:nth-child(1) {
         grid-column: 1 / 3;
         grid-row: 1 / 3;
@@ -382,7 +385,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
 
       .app-host-medal {
         background-image: url(/images/icons/medal.svg);
-        @apply text-east-bay text-xl  bg-left bg-no-repeat pl-8;
+        @apply text-east-bay text-xl bg-left bg-no-repeat pl-8;
       }
     }
 
@@ -394,11 +397,9 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-error-page {
     background-image: url(/images/illustrations/wave.svg),
       url(/images/illustrations/mountains.svg),
-      linear-gradient(
-        180deg,
+      linear-gradient(180deg,
         rgba(255, 255, 255, 1) 0%,
-        rgba(157, 187, 215, 1) 100%
-      );
+        rgba(157, 187, 215, 1) 100%);
     background-position: center, bottom -82px center, center;
     background-size: cover, auto, cover;
     @apply bg-no-repeat flex items-center justify-center min-h-screen;

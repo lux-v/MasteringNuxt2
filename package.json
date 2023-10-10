@@ -1,13 +1,16 @@
 {
   "name": "mastering-nuxt",
   "dependencies": {
+    "@nuxt/image": "^0.7.1",
     "body-parser": "^1.20.2",
+    "cloudinary-vue": "^1.2.4",
     "cookie": "^0.5.0",
     "google-auth-library": "^9.1.0",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^3.1.2",
     "nuxt": "^2.14.7",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "v-calendar": "^2.4.1"
   },
   "scripts": {
     "dev": "nuxt",

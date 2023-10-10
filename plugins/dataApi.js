@@ -82,7 +82,7 @@ export default function ({ $config }, inject) {
                 headers,
                 method: 'POST',
                 body: JSON.stringify({
-                    hitsPerPage: 10,
+                    hitsPerPage: 3,
                     attributesToHighlight: [],
                 })
             }))

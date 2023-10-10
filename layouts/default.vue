@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header class="app-header">
-      <nuxt-link class="app-logo" to="/">
+      <nuxt-link class="app-logo" to="/" style="min-width: 100px">
         <img src="/images/logo.svg" />
       </nuxt-link>
 

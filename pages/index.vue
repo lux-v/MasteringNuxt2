@@ -14,7 +14,7 @@
           :key="home.objectID"
           :to="`/home/${home.objectID}`"
         >
-          <home-row
+          <home-card
             class="app-house"
             :home="home"
             @mouseover.native="highlightMarker(home.objectID, true)"

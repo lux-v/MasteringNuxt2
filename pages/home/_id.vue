@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <!-- <property-gallery :images="home.images"/> -->
+    <property-gallery :images="home.images" />
     <property-details :home="home" />
     <property-description :home="home" />
     <property-map :home="home" />

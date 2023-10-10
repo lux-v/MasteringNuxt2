@@ -7,6 +7,17 @@ export default (algoliaConfig) => {
     const appId = algoliaConfig.appId
 
     return {
+        removeHome: async function (identity, homeId) {
+            const payload = (await this.getById(identity)).json
+            const homes = payload.homeId.filter(id => id !== homeId)
+            payload.homeId = homes
+            this.create(identity, payload)
+        },
+        assignHome: async function (identity, homeId) {
+            const payload = (await this.getById(identity)).json
+            payload.homeId.push(homeId)
+            this.create(identity, payload)
+        },
         create: async (identity, payload) => {
             try {
                 return unWrap(await fetch(`https://${appId}-dsn.algolia.net/1/indexes/users/${identity.id}`, {
