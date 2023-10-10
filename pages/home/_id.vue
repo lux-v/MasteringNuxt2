@@ -13,7 +13,7 @@
 export default {
   computed: {
     getSchema() {
-      return JSON.stringifgy({
+      return JSON.stringify({
         "@context": "http://schema.org",
         "@type": "BedAndBreakfast",
         name: this.home.title,
