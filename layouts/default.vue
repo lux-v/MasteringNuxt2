@@ -91,8 +91,8 @@ export default {
         name: "search",
         query: {
           ...this.location,
-          start: this.range.start.getTime() / 1000,
-          end: this.range.end.getTime() / 1000,
+          start: this.range?.start?.getTime() / 1000 || null,
+          end: this.range?.end?.getTime() / 1000 || null,
         },
       });
     },
