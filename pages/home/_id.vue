@@ -15,6 +15,11 @@ export default {
       title: this.home.title,
       meta: [
         { hid: "og-type", property: "og:type", content: "website" },
+        {
+          hid: "og-siteName",
+          property: "og:site_name",
+          content: this.home.title,
+        },
         { hid: "og-title", property: "og:title", content: this.home.title },
         {
           hid: "og-desc",
@@ -24,6 +29,7 @@ export default {
         {
           hid: "og-image",
           property: "og:image",
+          itemprop: "image",
           content: this.$img(
             this.home.images[0],
             { width: 1200 },
