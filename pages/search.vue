@@ -9,7 +9,7 @@
           :to="`/home/${home.objectID}`"
         >
           <home-row
-            class="app-house"
+            class="app-house" 
             :home="home"
             @mouseover.native="highlightMarker(home.objectID, true)"
             @mouseout.native="highlightMarker(home.objectID, false)"
